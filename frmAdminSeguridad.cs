@@ -97,17 +97,27 @@ namespace Pantallas_Sistema_Herramientas_Tres
             Consultar();
         }
 
+        public bool esNumerico(string num)
+        {
+            try
+            {
+                double x = Convert.ToDouble(num);
+                return true;
+            }
+            catch { return false; }
+        }
         private void Consultar()
         {
-            int IdEmpleado = int.Parse (cmbEmpleados.SelectedValue.ToString());
-            dt = AccesoSeguridadEmpleado.Consulta_AccesoSeguridadEmpleado(IdEmpleado);
+            if (esNumerico(cmbEmpleados.SelectedValue.ToString())) {
+                int IdEmpleado = int.Parse(cmbEmpleados.SelectedValue.ToString());
+                dt = AccesoSeguridadEmpleado.Consulta_AccesoSeguridadEmpleado(IdEmpleado);
 
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow row in dt.Rows) { TxtUsuario.Text = row[0].ToString(); TxtClave.Text = row[1].ToString(); }
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows) { TxtUsuario.Text = row[0].ToString(); TxtClave.Text = row[1].ToString(); }
+                }
+                else { TxtUsuario.Clear(); TxtClave.Clear(); MessageBox.Show("No se ha asignado Usuario y Clave a este Empleado"); }
             }
-            else { TxtUsuario.Clear(); TxtClave.Clear(); MessageBox.Show("No se ha asignado Usuario y Clave a este Empleado"); }
-
 
         }
 

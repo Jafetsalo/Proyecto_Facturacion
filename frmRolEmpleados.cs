@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Negocios;
 
 namespace Pantallas_Sistema_Herramientas_Tres
 {
@@ -17,6 +18,8 @@ namespace Pantallas_Sistema_Herramientas_Tres
             InitializeComponent();
         }
 
+        DataTable dt = new DataTable();
+        Cls_Roles rol = new Cls_Roles();
         private void frmRolEmpleados_Load(object sender, EventArgs e)
         {
             if (IdRolEmpleado == 0)
@@ -26,10 +29,25 @@ namespace Pantallas_Sistema_Herramientas_Tres
             else
             {
                 LblTitulo.Text = "MODIFICAR ROL EMPLEADO";
-                TxtIdRolDeEmpleados.Text = IdRolEmpleado.ToString();
-                TxtNombreRol.Text = "Especialista Generalista " + IdRolEmpleado.ToString();
+                llenarCampos();
 
             }
+        }
+
+        private void llenarCampos() 
+        {
+            TxtIdRolDeEmpleados.Text = IdRolEmpleado.ToString();
+            dt = rol.ConsultarRoles(IdRolEmpleado);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    TxtIdRolDeEmpleados.Text = row[0].ToString();
+                    TxtNombreRol.Text = row[1].ToString();
+                    
+                }
+            }
+            //TxtNombreRol.Text = 
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -39,11 +57,40 @@ namespace Pantallas_Sistema_Herramientas_Tres
 
         private void BtnActualizar_Click(object sender, EventArgs e)
         {
+            Guardar();
             MessageBox.Show("Datos Actualizados");
         }
 
+        private void Guardar()
+        {
+            string mensaje = "";
+            if (validarFormulario())
+            {
+                rol.C_IdRolEmpleado = IdRolEmpleado;
+                rol.C_StrDescripcion = TxtNombreRol.Text;
+
+                mensaje = rol.Actualizar_RolEmpleado();
+                MessageBox.Show(mensaje);
+            }
+        }
+
+        private bool validarFormulario()
+        {
+            bool errorCampos = true;
+            return errorCampos;
+        }
 
         public int IdRolEmpleado { get; set; }
+
+        private bool esNumerico(string text)
+        {
+            try
+            {
+                double x = Convert.ToDouble(text);
+                return true;
+            }
+            catch (Exception ex) { return false; }
+        }
 
 
     }

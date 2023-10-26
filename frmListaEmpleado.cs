@@ -62,6 +62,8 @@ namespace Pantallas_Sistema_Herramientas_Tres
                 int posActual = dgEmpleados.CurrentRow.Index;
                 if (MessageBox.Show("Seguro de borrar", "CONFIRMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    empleado.C_IdEmpleado = int.Parse(dgEmpleados[0, posActual].Value.ToString());
+                    empleado.EliminarEmpleado();
                     MessageBox.Show($"BORRANDO indice {e.RowIndex} ID {dgEmpleados[0, posActual].Value.ToString()}");
                 }
 
@@ -75,7 +77,7 @@ namespace Pantallas_Sistema_Herramientas_Tres
                 empleado.ShowDialog();
             }
 
-
+            llenarGrid();
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)

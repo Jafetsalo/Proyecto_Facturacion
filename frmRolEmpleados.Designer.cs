@@ -28,35 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TxtDescripcionRol = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtNombreRol = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtIdRolDeEmpleados = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TxtInformeRich = new System.Windows.Forms.RichTextBox();
             this.BtnSalir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnActualizar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.LblTitulo = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
-            // TxtDescripcionRol
-            // 
-            this.TxtDescripcionRol.Depth = 0;
-            this.TxtDescripcionRol.Hint = "Descripción Detallada Rol";
-            this.TxtDescripcionRol.Location = new System.Drawing.Point(80, 131);
-            this.TxtDescripcionRol.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TxtDescripcionRol.Name = "TxtDescripcionRol";
-            this.TxtDescripcionRol.PasswordChar = '\0';
-            this.TxtDescripcionRol.SelectedText = "";
-            this.TxtDescripcionRol.SelectionLength = 0;
-            this.TxtDescripcionRol.SelectionStart = 0;
-            this.TxtDescripcionRol.Size = new System.Drawing.Size(172, 23);
-            this.TxtDescripcionRol.TabIndex = 73;
-            this.TxtDescripcionRol.UseSystemPasswordChar = false;
-            // 
             // TxtNombreRol
             // 
             this.TxtNombreRol.Depth = 0;
             this.TxtNombreRol.Hint = "Nombre Rol";
-            this.TxtNombreRol.Location = new System.Drawing.Point(80, 89);
+            this.TxtNombreRol.Location = new System.Drawing.Point(124, 188);
             this.TxtNombreRol.MouseState = MaterialSkin.MouseState.HOVER;
             this.TxtNombreRol.Name = "TxtNombreRol";
             this.TxtNombreRol.PasswordChar = '\0';
@@ -81,14 +64,6 @@
             this.TxtIdRolDeEmpleados.Size = new System.Drawing.Size(75, 23);
             this.TxtIdRolDeEmpleados.TabIndex = 71;
             this.TxtIdRolDeEmpleados.UseSystemPasswordChar = false;
-            // 
-            // TxtInformeRich
-            // 
-            this.TxtInformeRich.Location = new System.Drawing.Point(80, 185);
-            this.TxtInformeRich.Name = "TxtRichDatosAdicionales";
-            this.TxtInformeRich.Size = new System.Drawing.Size(428, 138);
-            this.TxtInformeRich.TabIndex = 70;
-            this.TxtInformeRich.Text = "";
             // 
             // BtnSalir
             // 
@@ -135,10 +110,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 450);
             this.Controls.Add(this.LblTitulo);
-            this.Controls.Add(this.TxtDescripcionRol);
             this.Controls.Add(this.TxtNombreRol);
             this.Controls.Add(this.TxtIdRolDeEmpleados);
-            this.Controls.Add(this.TxtInformeRich);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnActualizar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -151,11 +124,8 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialSingleLineTextField TxtDescripcionRol;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtNombreRol;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtIdRolDeEmpleados;
-        private System.Windows.Forms.RichTextBox TxtInformeRich;
         private MaterialSkin.Controls.MaterialRaisedButton BtnSalir;
         private MaterialSkin.Controls.MaterialRaisedButton BtnActualizar;
         private MaterialSkin.Controls.MaterialLabel LblTitulo;

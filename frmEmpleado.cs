@@ -78,10 +78,11 @@ namespace Pantallas_Sistema_Herramientas_Tres
                 empleado.C_StrTelefono = TxtTelefono.Text;
                 empleado.C_StrEmail = TxtEmail.Text;
                 empleado.C_IdRolEmpleado = int.Parse(cmbRolEmpleado.SelectedValue.ToString());
-                empleado.C_DtmIngreso = dateFechaInicio.Text; //NOT SURE ABOUT THIS. PLEASE CHECK THIS LATER
-                empleado.C_DtmRetiro = dateFechaRetiro.Text;
+                empleado.C_DtmIngreso = dateFechaInicio.Value.Date.ToShortDateString(); //NOT SURE ABOUT THIS. PLEASE CHECK THIS LATER
+                empleado.C_DtmRetiro = dateFechaRetiro.Value.Date.ToShortDateString();
                 empleado.C_StrDatosAdicionales = TxtRichDatosAdicionales.Text;
                 empleado.C_StrUsuarioModifico = "Administrador";
+                
                 mensaje = empleado.ActualizarEmpleado();
                 MessageBox.Show(mensaje);
             }

@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             this.dgRolEmpleados = new System.Windows.Forms.DataGridView();
-            this.Id_RolEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strNombreRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strDescripcionRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnBorrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BtnBuscar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnNuevo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnSalir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TxtRolEmpleados = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.LblTitulo = new MaterialSkin.Controls.MaterialLabel();
+            this.Id_RolEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.strNombreRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnBorrar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgRolEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +47,6 @@
             this.dgRolEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_RolEmpleado,
             this.strNombreRol,
-            this.strDescripcionRol,
             this.btnEditar,
             this.btnBorrar});
             this.dgRolEmpleados.Location = new System.Drawing.Point(67, 126);
@@ -56,43 +54,6 @@
             this.dgRolEmpleados.Size = new System.Drawing.Size(584, 244);
             this.dgRolEmpleados.TabIndex = 24;
             this.dgRolEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRolEmpleados_CellContentClick);
-            // 
-            // Id_RolEmpleado
-            // 
-            this.Id_RolEmpleado.HeaderText = "ID";
-            this.Id_RolEmpleado.Name = "Id_RolEmpleado";
-            this.Id_RolEmpleado.Width = 80;
-            // 
-            // strNombreRol
-            // 
-            this.strNombreRol.HeaderText = "NOMBRE DE ROL";
-            this.strNombreRol.Name = "strNombreRol";
-            this.strNombreRol.Width = 300;
-            // 
-            // strDescripcionRol
-            // 
-            this.strDescripcionRol.HeaderText = "DESCRIPCION DETALLE ROL";
-            this.strDescripcionRol.Name = "strDescripcionRol";
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.HeaderText = "EDITAR";
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnEditar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnEditar.Text = "EDITAR";
-            this.btnEditar.UseColumnTextForButtonValue = true;
-            this.btnEditar.Width = 80;
-            // 
-            // btnBorrar
-            // 
-            this.btnBorrar.HeaderText = "BORRAR";
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnBorrar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnBorrar.Text = "BORRAR";
-            this.btnBorrar.UseColumnTextForButtonValue = true;
-            this.btnBorrar.Width = 80;
             // 
             // BtnBuscar
             // 
@@ -161,6 +122,38 @@
             this.LblTitulo.TabIndex = 19;
             this.LblTitulo.Text = "ROL DE EMPLEADOS";
             // 
+            // Id_RolEmpleado
+            // 
+            this.Id_RolEmpleado.HeaderText = "ID";
+            this.Id_RolEmpleado.Name = "Id_RolEmpleado";
+            this.Id_RolEmpleado.Width = 80;
+            // 
+            // strNombreRol
+            // 
+            this.strNombreRol.HeaderText = "NOMBRE DE ROL";
+            this.strNombreRol.Name = "strNombreRol";
+            this.strNombreRol.Width = 300;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.HeaderText = "EDITAR";
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnEditar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnEditar.Text = "EDITAR";
+            this.btnEditar.UseColumnTextForButtonValue = true;
+            this.btnEditar.Width = 80;
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.HeaderText = "BORRAR";
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnBorrar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnBorrar.Text = "BORRAR";
+            this.btnBorrar.UseColumnTextForButtonValue = true;
+            this.btnBorrar.Width = 80;
+            // 
             // frmListaRolEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,7 +186,6 @@
         private MaterialSkin.Controls.MaterialLabel LblTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_RolEmpleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn strNombreRol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn strDescripcionRol;
         private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
         private System.Windows.Forms.DataGridViewButtonColumn btnBorrar;
     }
