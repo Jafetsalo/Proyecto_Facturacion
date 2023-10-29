@@ -25,6 +25,7 @@ namespace Pantallas_Sistema_Herramientas_Tres
             frmCategoriaProducto categoriaProductos = new frmCategoriaProducto();
             categoriaProductos.IdCategoriaProducto = 0;
             categoriaProductos.ShowDialog();
+            llenarGrid();
         }
 
 
