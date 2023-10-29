@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnSalir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnActualizar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TxtIdProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -36,11 +37,13 @@
             this.TxtCodigoReferencia = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtPrecioCompra = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtNombreProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TxtCategoriaProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtRutaImagen = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.TxtDetalleProducto = new System.Windows.Forms.RichTextBox();
             this.LblDetallesProducto = new MaterialSkin.Controls.MaterialLabel();
             this.LblTitulo = new MaterialSkin.Controls.MaterialLabel();
+            this.cmbCategoriaProducto = new System.Windows.Forms.ComboBox();
+            this.MensajeError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnSalir
@@ -159,21 +162,6 @@
             this.TxtNombreProducto.TabIndex = 10;
             this.TxtNombreProducto.UseSystemPasswordChar = false;
             // 
-            // TxtCategoriaProducto
-            // 
-            this.TxtCategoriaProducto.Depth = 0;
-            this.TxtCategoriaProducto.Hint = "Categoría Producto";
-            this.TxtCategoriaProducto.Location = new System.Drawing.Point(476, 137);
-            this.TxtCategoriaProducto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TxtCategoriaProducto.Name = "TxtCategoriaProducto";
-            this.TxtCategoriaProducto.PasswordChar = '\0';
-            this.TxtCategoriaProducto.SelectedText = "";
-            this.TxtCategoriaProducto.SelectionLength = 0;
-            this.TxtCategoriaProducto.SelectionStart = 0;
-            this.TxtCategoriaProducto.Size = new System.Drawing.Size(172, 23);
-            this.TxtCategoriaProducto.TabIndex = 16;
-            this.TxtCategoriaProducto.UseSystemPasswordChar = false;
-            // 
             // TxtRutaImagen
             // 
             this.TxtRutaImagen.Depth = 0;
@@ -189,13 +177,13 @@
             this.TxtRutaImagen.TabIndex = 17;
             this.TxtRutaImagen.UseSystemPasswordChar = false;
             // 
-            // richTextBox1
+            // TxtDetalleProducto
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(476, 247);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(222, 88);
-            this.richTextBox1.TabIndex = 18;
-            this.richTextBox1.Text = "";
+            this.TxtDetalleProducto.Location = new System.Drawing.Point(476, 247);
+            this.TxtDetalleProducto.Name = "TxtDetalleProducto";
+            this.TxtDetalleProducto.Size = new System.Drawing.Size(222, 88);
+            this.TxtDetalleProducto.TabIndex = 18;
+            this.TxtDetalleProducto.Text = "";
             // 
             // LblDetallesProducto
             // 
@@ -223,16 +211,28 @@
             this.LblTitulo.TabIndex = 20;
             this.LblTitulo.Text = "ADMINISTRACION PRODUCTOS";
             // 
+            // cmbCategoriaProducto
+            // 
+            this.cmbCategoriaProducto.FormattingEnabled = true;
+            this.cmbCategoriaProducto.Location = new System.Drawing.Point(477, 138);
+            this.cmbCategoriaProducto.Name = "cmbCategoriaProducto";
+            this.cmbCategoriaProducto.Size = new System.Drawing.Size(121, 21);
+            this.cmbCategoriaProducto.TabIndex = 21;
+            // 
+            // MensajeError
+            // 
+            this.MensajeError.ContainerControl = this;
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbCategoriaProducto);
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.LblDetallesProducto);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.TxtDetalleProducto);
             this.Controls.Add(this.TxtRutaImagen);
-            this.Controls.Add(this.TxtCategoriaProducto);
             this.Controls.Add(this.TxtIdProducto);
             this.Controls.Add(this.TxtPrecioVenta);
             this.Controls.Add(this.TxtCantidadStock);
@@ -245,6 +245,7 @@
             this.Name = "frmProductos";
             this.Text = "frmProductos";
             this.Load += new System.EventHandler(this.frmProductos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,10 +260,11 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtCodigoReferencia;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtPrecioCompra;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtNombreProducto;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TxtCategoriaProducto;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtRutaImagen;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox TxtDetalleProducto;
         private MaterialSkin.Controls.MaterialLabel LblDetallesProducto;
         private MaterialSkin.Controls.MaterialLabel LblTitulo;
+        private System.Windows.Forms.ComboBox cmbCategoriaProducto;
+        private System.Windows.Forms.ErrorProvider MensajeError;
     }
 }

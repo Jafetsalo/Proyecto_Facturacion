@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LblNumeroFactura = new MaterialSkin.Controls.MaterialLabel();
             this.LblCliente = new MaterialSkin.Controls.MaterialLabel();
             this.LblEmpleado = new MaterialSkin.Controls.MaterialLabel();
@@ -44,7 +45,11 @@
             this.dateFechaRegistro = new System.Windows.Forms.DateTimePicker();
             this.BtnSalir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnActualizar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.TxtFacturaRich = new System.Windows.Forms.RichTextBox();
+            this.TxtDescuento = new System.Windows.Forms.TextBox();
+            this.TxtImpuesto = new System.Windows.Forms.TextBox();
+            this.TxtTotalFactura = new System.Windows.Forms.TextBox();
+            this.MensajeError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).BeginInit();
             this.SuspendLayout();
             // 
             // LblNumeroFactura
@@ -198,14 +203,14 @@
             // dateFechaRegistro
             // 
             this.dateFechaRegistro.Location = new System.Drawing.Point(588, 173);
-            this.dateFechaRegistro.Name = "dateFechaRetiro";
+            this.dateFechaRegistro.Name = "dateFechaRegistro";
             this.dateFechaRegistro.Size = new System.Drawing.Size(200, 20);
             this.dateFechaRegistro.TabIndex = 13;
             // 
             // BtnSalir
             // 
             this.BtnSalir.Depth = 0;
-            this.BtnSalir.Location = new System.Drawing.Point(690, 531);
+            this.BtnSalir.Location = new System.Drawing.Point(690, 362);
             this.BtnSalir.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Primary = true;
@@ -218,7 +223,7 @@
             // BtnActualizar
             // 
             this.BtnActualizar.Depth = 0;
-            this.BtnActualizar.Location = new System.Drawing.Point(670, 333);
+            this.BtnActualizar.Location = new System.Drawing.Point(670, 296);
             this.BtnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Primary = true;
@@ -228,20 +233,39 @@
             this.BtnActualizar.UseVisualStyleBackColor = true;
             this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
-            // TxtFacturaRich
+            // TxtDescuento
             // 
-            this.TxtFacturaRich.Location = new System.Drawing.Point(139, 394);
-            this.TxtFacturaRich.Name = "TxtFacturaRich";
-            this.TxtFacturaRich.Size = new System.Drawing.Size(527, 160);
-            this.TxtFacturaRich.TabIndex = 25;
-            this.TxtFacturaRich.Text = "";
+            this.TxtDescuento.Location = new System.Drawing.Point(258, 266);
+            this.TxtDescuento.Name = "TxtDescuento";
+            this.TxtDescuento.Size = new System.Drawing.Size(100, 20);
+            this.TxtDescuento.TabIndex = 26;
+            // 
+            // TxtImpuesto
+            // 
+            this.TxtImpuesto.Location = new System.Drawing.Point(258, 299);
+            this.TxtImpuesto.Name = "TxtImpuesto";
+            this.TxtImpuesto.Size = new System.Drawing.Size(100, 20);
+            this.TxtImpuesto.TabIndex = 27;
+            // 
+            // TxtTotalFactura
+            // 
+            this.TxtTotalFactura.Location = new System.Drawing.Point(258, 336);
+            this.TxtTotalFactura.Name = "TxtTotalFactura";
+            this.TxtTotalFactura.Size = new System.Drawing.Size(100, 20);
+            this.TxtTotalFactura.TabIndex = 28;
+            // 
+            // MensajeError
+            // 
+            this.MensajeError.ContainerControl = this;
             // 
             // frmFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 579);
-            this.Controls.Add(this.TxtFacturaRich);
+            this.ClientSize = new System.Drawing.Size(800, 425);
+            this.Controls.Add(this.TxtTotalFactura);
+            this.Controls.Add(this.TxtImpuesto);
+            this.Controls.Add(this.TxtDescuento);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnActualizar);
             this.Controls.Add(this.dateFechaRegistro);
@@ -262,6 +286,7 @@
             this.Name = "frmFacturas";
             this.Text = "frmFacturas";
             this.Load += new System.EventHandler(this.frmFacturas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +310,9 @@
         private System.Windows.Forms.DateTimePicker dateFechaRegistro;
         private MaterialSkin.Controls.MaterialRaisedButton BtnSalir;
         private MaterialSkin.Controls.MaterialRaisedButton BtnActualizar;
-        private System.Windows.Forms.RichTextBox TxtFacturaRich;
+        private System.Windows.Forms.TextBox TxtDescuento;
+        private System.Windows.Forms.TextBox TxtImpuesto;
+        private System.Windows.Forms.TextBox TxtTotalFactura;
+        private System.Windows.Forms.ErrorProvider MensajeError;
     }
 }

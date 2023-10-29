@@ -1,17 +1,23 @@
-﻿using System;
+﻿using Capa_Negocios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Pantallas_Sistema_Herramientas_Tres
 {
     public partial class frmListaClientes : Form
     {
+        DataTable dt = new DataTable();
+        Cls_Clientes cliente = new Cls_Clientes();
+
         public frmListaClientes()
         {
             InitializeComponent();
@@ -24,18 +30,27 @@ namespace Pantallas_Sistema_Herramientas_Tres
 
         private void llenarGrid() 
         {
-            for (int i = 1; i <= 10; i++) 
+            dgClientes.Rows.Clear();
+            dt = cliente.ConsultarCliente();
+
+            if (dt != null)
             {
-                dgClientes.Rows.Add(i,$"Nombre {i} Apellido {i}", $"{i*12345}", $"{i * 12345}");
+                foreach (DataRow row in dt.Rows)
+                {
+                    dgClientes.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[3].ToString(), row[2].ToString());//ID CLIENTE TELEFONO DOCUMENTO
+                }
             }
+            else { MessageBox.Show("No se encontraron registros"); }
+
 
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
         {
-            frmEditarCliente cliente = new frmEditarCliente();
-            cliente.IdCliente = 0;
-            cliente.ShowDialog();
+            frmEditarCliente formularioCliente = new frmEditarCliente();
+            formularioCliente.IdCliente = 0;
+            formularioCliente.ShowDialog();
+            llenarGrid();
         }
 
         private void dgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -46,6 +61,8 @@ namespace Pantallas_Sistema_Herramientas_Tres
                 int posActual = dgClientes.CurrentRow.Index;
                 if (MessageBox.Show("Seguro de borrar", "CONFIRMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
                 {
+                    cliente.C_IdCliente = int.Parse(dgClientes[0, posActual].Value.ToString());
+                    cliente.EliminarCliente();
                     MessageBox.Show($"BORRANDO indice {e.RowIndex} ID {dgClientes[0, posActual].Value.ToString()}");
                 }
 
@@ -54,15 +71,37 @@ namespace Pantallas_Sistema_Herramientas_Tres
             if (dgClientes.Columns[e.ColumnIndex].Name == "btnEditar") 
             {
                 int posActual = dgClientes.CurrentRow.Index;
-                frmEditarCliente Cliente = new frmEditarCliente();
-                Cliente.IdCliente = int.Parse(dgClientes[0, posActual].Value.ToString());
-                Cliente.ShowDialog();
+                frmEditarCliente formularioCliente = new frmEditarCliente();
+                formularioCliente.IdCliente = int.Parse(dgClientes[0, posActual].Value.ToString());
+                formularioCliente.ShowDialog();
             }
 
 
+            llenarGrid();
 
 
+        }
 
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+
+            if (TxtCliente.Text != "") 
+            {
+                dgClientes.Rows.Clear();
+                dt = cliente.Filtrar_Cliente(TxtCliente.Text);
+
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dgClientes.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[3].ToString(), row[2].ToString());
+                    }
+
+                }
+                
+            }
+            else { llenarGrid();}
+            TxtCliente.Clear();
         }
     }
 }

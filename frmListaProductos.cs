@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capa_Negocios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace Pantallas_Sistema_Herramientas_Tres
 {
     public partial class frmListaProductos : Form
     {
+        Cls_Producto producto = new Cls_Producto();
+        DataTable dt = new DataTable();
+
         public frmListaProductos()
         {
             InitializeComponent();
@@ -26,16 +30,23 @@ namespace Pantallas_Sistema_Herramientas_Tres
             frmProductos productos = new frmProductos();
             productos.IdProducto = 0;
             productos.ShowDialog();
+            llenarGrid();
         }
 
 
         private void llenarGrid()
         {
-            for (int i = 1; i <= 10; i++)
+            dgProductos.Rows.Clear();
+            dt = producto.ConsultarProducto();
+            if (dt != null) 
             {
-                dgProductos.Rows.Add(i, $"Articulo {i} Código {i}", $"{i * 12345}", $"{i * 12345}");
+                foreach (DataRow row in dt.Rows) 
+                {
+                    dgProductos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[8].ToString(), row[5].ToString(), row[7].ToString(), row[6].ToString());
+                }
+                
             }
-
+            else { MessageBox.Show("No se encontraron registros"); }
         }
 
         private void dgProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -46,6 +57,8 @@ namespace Pantallas_Sistema_Herramientas_Tres
                 int posActual = dgProductos.CurrentRow.Index;
                 if (MessageBox.Show("Seguro de borrar", "CONFIRMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    producto.C_IdProducto = int.Parse(dgProductos[0,posActual].Value.ToString());
+                    producto.EliminarProducto();
                     MessageBox.Show($"BORRANDO indice {e.RowIndex} ID {dgProductos[0, posActual].Value.ToString()}");
                 }
 
@@ -54,15 +67,33 @@ namespace Pantallas_Sistema_Herramientas_Tres
             if (dgProductos.Columns[e.ColumnIndex].Name == "btnEditar")
             {
                 int posActual = dgProductos.CurrentRow.Index;
-                frmProductos productos = new frmProductos();
-                productos.IdProducto = int.Parse(dgProductos[0, posActual].Value.ToString());
-                productos.ShowDialog();
+                frmProductos formularioProducto = new frmProductos();
+                formularioProducto.IdProducto = int.Parse(dgProductos[0, posActual].Value.ToString());
+                formularioProducto.ShowDialog();
             }
 
-
+            llenarGrid();
 
         }
 
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            if (TxtProducto.Text != "")
+            {
+                dgProductos.Rows.Clear();
+                dt = producto.Filtrar_Producto(TxtProducto.Text);
 
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        dgProductos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[8].ToString(), row[5].ToString(), row[7].ToString(), row[6].ToString());
+                    }
+                }
+            }
+            else { llenarGrid(); }
+            TxtProducto.Clear();
+            
+        }
     }
 }

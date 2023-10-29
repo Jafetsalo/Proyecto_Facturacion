@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capa_Negocios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Pantallas_Sistema_Herramientas_Tres
 {
     public partial class frmListaCategoriaProducto : Form
     {
+        DataTable dt = new DataTable();
+        Cls_CategoriaProducto categoriaProducto = new Cls_CategoriaProducto();
         public frmListaCategoriaProducto()
         {
             InitializeComponent();
@@ -27,11 +30,13 @@ namespace Pantallas_Sistema_Herramientas_Tres
 
         private void llenarGrid()
         {
-            for (int i = 1; i <= 10; i++)
+            dgCategoriaProductos.Rows.Clear();
+            dt = categoriaProducto.Consultar_CategoriaProducto();
+            if (dt != null)
             {
-                dgCategoriaProductos.Rows.Add(i, $"Categoría Código {i}");
+                foreach (DataRow row in dt.Rows) { dgCategoriaProductos.Rows.Add(row[0].ToString(), row[1].ToString()); }
             }
-
+            else { MessageBox.Show("No se encontraron registros"); }
         }
 
         private void dgCategoriaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -42,7 +47,10 @@ namespace Pantallas_Sistema_Herramientas_Tres
                 int posActual = dgCategoriaProductos.CurrentRow.Index;
                 if (MessageBox.Show("Seguro de borrar", "CONFIRMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show($"BORRANDO indice {e.RowIndex} ID {dgCategoriaProductos[0, posActual].Value.ToString()}");
+                    categoriaProducto.C_IdCategoria = int.Parse(dgCategoriaProductos[0, posActual].Value.ToString());
+                    categoriaProducto.Eliminar_CategoriaProducto();
+                    
+                    MessageBox.Show($"BORRADO indice {e.RowIndex} ID {dgCategoriaProductos[0, posActual].Value.ToString()}");
                 }
 
             }
@@ -54,14 +62,27 @@ namespace Pantallas_Sistema_Herramientas_Tres
                 categoriaProductos.IdCategoriaProducto = int.Parse(dgCategoriaProductos[0, posActual].Value.ToString());
                 categoriaProductos.ShowDialog();
             }
-
+            llenarGrid();
 
 
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            if (TxtCategoriaPro.Text != "") 
+            {
+                dgCategoriaProductos.Rows.Clear();
 
+                dt = categoriaProducto.Filtrar_CategoriaProducto(TxtCategoriaPro.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows) { dgCategoriaProductos.Rows.Add(row[0].ToString(), row[1].ToString()); }
+                }
+               
+
+            }
+            else { llenarGrid(); }
+            TxtCategoriaPro.Clear();
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)

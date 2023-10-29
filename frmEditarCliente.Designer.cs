@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LblTitulo = new MaterialSkin.Controls.MaterialLabel();
             this.TxtNombre = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtDireccion = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -37,6 +38,8 @@
             this.BtnActualizar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnSalir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TxtIdCliente = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.MensajeError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitulo
@@ -168,6 +171,10 @@
             this.TxtIdCliente.TabIndex = 8;
             this.TxtIdCliente.UseSystemPasswordChar = false;
             // 
+            // MensajeError
+            // 
+            this.MensajeError.ContainerControl = this;
+            // 
             // frmEditarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,6 +194,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Actualizar Cliente";
             this.Load += new System.EventHandler(this.frmEditarCliente_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +211,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton BtnActualizar;
         private MaterialSkin.Controls.MaterialRaisedButton BtnSalir;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtIdCliente;
+        private System.Windows.Forms.ErrorProvider MensajeError;
     }
 }

@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LblTitulo = new MaterialSkin.Controls.MaterialLabel();
             this.TxtIdProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtNombreCategoriaProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.BtnSalir = new MaterialSkin.Controls.MaterialRaisedButton();
             this.BtnActualizar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.MensajeError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitulo
@@ -104,6 +107,10 @@
             this.BtnActualizar.UseVisualStyleBackColor = true;
             this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
+            // MensajeError
+            // 
+            this.MensajeError.ContainerControl = this;
+            // 
             // frmCategoriaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,6 +125,7 @@
             this.Name = "frmCategoriaProducto";
             this.Text = "frmCategoriaProducto";
             this.Load += new System.EventHandler(this.frmCategoriaProducto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.MensajeError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +138,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtNombreCategoriaProducto;
         private MaterialSkin.Controls.MaterialRaisedButton BtnSalir;
         private MaterialSkin.Controls.MaterialRaisedButton BtnActualizar;
+        private System.Windows.Forms.ErrorProvider MensajeError;
     }
 }

@@ -107,6 +107,7 @@
             this.BtnBuscar.TabIndex = 5;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // dgClientes
             // 
